@@ -24,16 +24,19 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-monaco-editor-v2/assets",
+                "output": "./assets/monaco/"
               }
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "outputMode": "static",
+            "ssr": false,
+            "prerender": false
           },
           "configurations": {
             "production": {
@@ -42,11 +45,6 @@
                   "type": "initial",
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -57,7 +55,7 @@
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
@@ -80,20 +78,13 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              { "glob": "**/*", "input": "public" }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": [ "src/styles.scss" ]
           }
         }
       }
     }
   },
-  "cli": {
-    "analytics": false
-  }
+  "cli": { "analytics": false }
 }
