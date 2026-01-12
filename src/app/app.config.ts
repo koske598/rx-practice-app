@@ -2,8 +2,12 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessC
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2';
 import { FormsModule } from '@angular/forms';
+
+const monacoConfig: NgxMonacoEditorConfig = {
+  baseUrl: 'assets/monaco/vs' 
+};
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),     
     importProvidersFrom(
-      MonacoEditorModule.forRoot(),
+      MonacoEditorModule.forRoot(monacoConfig),
       FormsModule
     ),
   ]

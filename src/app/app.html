@@ -1,28 +1,19 @@
-<div style="padding: 20px;">
-  <h1>RxJS Practice Labs</h1>
-  
-  <div style="display: flex; gap: 20px; height: 400px;">
-    <div style="flex: 1; border: 1px solid #ccc;">
-      @if (isBrowser) {
-        <ngx-monaco-editor 
-          style="height: 100%" 
-          [options]="editorOptions" 
-          [(ngModel)]="code">
-        </ngx-monaco-editor>
-      }
-    </div>
-
-    <div style="flex: 1; background: #f4f4f4; padding: 15px; overflow-y: auto;">
-      <button (click)="runCode()" style="padding: 10px 20px; cursor: pointer;">
-        実行する
-      </button>
-      
-      <h3>実行結果:</h3>
-      <ul>
-        @for (item of results; track $index) {
-          <li>{{ item }}</li>
-        }
-      </ul>
+<div class="container">
+  <div class="exercise-header">
+    <h2>Q{{currentExercise.id}}: {{currentExercise.title}}</h2>
+    <p>{{currentExercise.description}}</p>
+  </div>
+  <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="currentExercise.initialCode"></ngx-monaco-editor>
+  <button (click)="runCode()">実行して判定</button>
+  <div class="result-panel">
+    @if (isCorrect === true) {
+      <div class="alert success">🎉 正解です！ <br> {{currentExercise.explanation}}</div>
+    } 
+    @if (isCorrect === false) {
+      <div class="alert error">❌ 不正解です。<br> 期待値　: {{currentExercise.expectedOutput | json}}</div>
+    }
+    <div class="output">
+      出力結果: {{ results | json }}
     </div>
   </div>
 </div>
