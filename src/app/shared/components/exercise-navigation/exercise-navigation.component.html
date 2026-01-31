@@ -1,0 +1,15 @@
+<div class="exercise-nav">
+  <button 
+    class="nav-button"
+    (click)="onPrevious()" 
+    [disabled]="!canGoPrevious">
+    ← 前へ
+  </button>
+  <span class="nav-info">問題 {{ currentIndex + 1 }} / {{ totalExercises }}</span>
+  <button 
+    class="nav-button"
+    (click)="onNext()" 
+    [disabled]="!canGoNext">
+    次へ →
+  </button>
+</div>

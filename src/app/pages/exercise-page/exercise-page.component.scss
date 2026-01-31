@@ -1,0 +1,75 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.exercise-header {
+  margin-bottom: 20px;
+  
+  h2 {
+    margin: 10px 0;
+    color: var(--mat-sys-primary, #1976d2);
+    font-size: 24px;
+  }
+  
+  p {
+    color: var(--mat-sys-on-surface, #333);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  .difficulty-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 8px;
+    
+    &.difficulty-beginner {
+      background: #4caf50;
+      color: white;
+    }
+    
+    &.difficulty-intermediate {
+      background: #ff9800;
+      color: white;
+    }
+    
+    &.difficulty-advanced {
+      background: #f44336;
+      color: white;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  
+  button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  .btn-primary {
+    background: var(--mat-sys-primary, #1976d2);
+    color: white;
+  }
+  
+  .btn-secondary {
+    background: var(--mat-sys-surface-variant, #e0e0e0);
+    color: var(--mat-sys-on-surface, #333);
+  }
+}

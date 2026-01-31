@@ -1,0 +1,8 @@
+@if (isBrowser) {
+  <ngx-monaco-editor
+    [options]="editorOptions"
+    [(ngModel)]="code"
+    (ngModelChange)="onCodeChange($event)"
+    (onInit)="onEditorInit($event)">
+  </ngx-monaco-editor>
+}

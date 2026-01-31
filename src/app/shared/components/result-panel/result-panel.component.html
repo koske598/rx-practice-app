@@ -1,0 +1,31 @@
+@if (data) {
+  <div class="result-panel">
+    @if (data.error) {
+      <div class="alert error">
+        ❌ エラー: {{ data.error }}
+      </div>
+    }
+    
+    @if (!data.error && data.isCorrect === true) {
+      <div class="alert success">
+        🎉 正解です！
+        @if (data.explanation) {
+          <br>{{ data.explanation }}
+        }
+      </div>
+    }
+    
+    @if (!data.error && data.isCorrect === false) {
+      <div class="alert error">
+        ❌ 不正解です。
+        @if (data.expectedOutput) {
+          <br>期待値: {{ data.expectedOutput | json }}
+        }
+      </div>
+    }
+    
+    <div class="output">
+      <strong>出力結果:</strong> {{ data.results | json }}
+    </div>
+  </div>
+}

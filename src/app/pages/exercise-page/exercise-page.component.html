@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="exercise-header">
+    <h2>Q{{ currentExercise.id }}: {{ currentExercise.title }}</h2>
+    <p>{{ currentExercise.description }}</p>
+    @if (currentExercise.difficulty) {
+      <span class="difficulty-badge" [class]="'difficulty-' + currentExercise.difficulty">
+        {{ currentExercise.difficulty === 'beginner' ? '初級' : 
+           currentExercise.difficulty === 'intermediate' ? '中級' : '上級' }}
+      </span>
+    }
+  </div>
+
+  <app-exercise-navigation
+    [currentIndex]="currentExerciseIndex"
+    [totalExercises]="exercises.length"
+    (previous)="previousExercise()"
+    (next)="nextExercise()">
+  </app-exercise-navigation>
+
+  <app-code-editor
+    [code]="currentCode"
+    (codeChange)="onCodeChange($event)">
+  </app-code-editor>
+
+  <div class="action-buttons">
+    <button class="btn-primary" (click)="runCode()">実行して判定</button>
+    <button class="btn-secondary" (click)="resetExercise()">リセット</button>
+  </div>
+
+  <app-result-panel [data]="resultPanelData"></app-result-panel>
+</div>
